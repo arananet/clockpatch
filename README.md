@@ -10,7 +10,7 @@ The problematic part of the design is here:
 
 ![Image of PCB without clock patch](BaseFalcon.png)
 
-Here we can see that the main clock signal (16.042494 MHz) goes from the Combel (also known as the Combo IC :)) via **R21**, having **C208** (not present on PCB since rev.H) as a low pass filter and finally through **R217** (0 Ω) right into three resistors: **R216** (33 Ω), **R221** (33 Ω, changed to 0 Ω in PCB rev.H) and **R222** (33 Ω).
+Here we can see that the main clock signal (16.042494 MHz) goes from the Combel (also known as the Combo IC :)) via **R21** (27 Ω, other side of PCB), having **C208** (10 pF, on the other side of PCB; not present on PCB since rev.H) as a low pass filter and finally through **R217** (0 Ω) right into three resistors: **R216** (33 Ω), **R221** (33 Ω, changed to 0 Ω in PCB rev.H) and **R222** (33 Ω).
 
 Atari didn't realise the problem until it was too late. As you can see in the [schematic / PCB history log](history.md), the first attempt to fix had appeared in August 1993, i.e. by the time when Atari would be shutting down Falcon manufacturing.
 
