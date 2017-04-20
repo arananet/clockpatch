@@ -1,3 +1,5 @@
+[work in progress...]
+
 This is a website trying to explain the clock patch for the Atari Falcon in layman's terms. As a bonus, you can find here [history of all known schematic and PCB revisions](history.md), with details of every change (if available).
 
 Purpose of this site is not to shock you with some new findings but gather the existing knowledge. If you google for Falcon clock patch, you'll get very fragmented information with blurry schematics and very often not even in English language but in German or French instead. Basically, all the great knowledge is burried in old magazines, FidoNet archives and ancient Usenet groups' posts.
@@ -26,30 +28,54 @@ As if this wasn't enough, another important feature of a clock patch is which *f
 - **74LSx**: "Low-power Schottky", 10ns gate delay
 - **74HCTx**: "High-speed CMOS TTL voltage", 8ns gate delay
 
-The delay means how much time the gate needs to perform given operation. As you will see, this is very important factor for different clock patches!
-
-And also, the manufacturer is important. In our case the important names are:
-- **SN740x**: Texas instruments
-- **DM740x**: National semiconductor
+To make things even more confusing, various manufacturers guarantee different delay times. So it does matter whether the gate is manufactured by Motorola (in the past...), Philips or Fairchild. The manufacturer can be sometimes guessed from the gate name prefix, for instance:
+- **SN740x**: Texas instruments, Fairchild, ...
+- **DM740x**: National semiconductor, ...
 - **MC740x**: Motorola (for historical reasons)
 
-And to make our 7404 journey complete, the "N" suffix means plastic through-hole DIP package, in other words, the usual legs so you can solder it to U63's legs.
+But it's not guaranteed, it's not unusual that more than one manufacturer share the same prefix. And often there's no prefix at all and you just have to look it up in catalogue (or via Google). Seriously, WTF?
+
+The delay means how much time the gate needs to perform given operation. As you will see, this is very important factor for different clock patches!
+
+To make our 7404 journey complete, the "N" suffix means plastic through-hole DIP package, in other words, the usual long legs so you can solder them to U63's legs. Strangely, even this has influence on the clock patch quality, other packages (for instance those SMT-like ICs) are said to work much less reliably in certain scenarios.
 
 ## Why does it exist?
 
-I wish I could tell you that those gates are doing some well defined operation which Atari engineers just forgot to implement. The truth is that nobody really knows what's happening there and why the gates help (!).
-
-The problematic part of the design is here:
+The problematic parts of Falcon's design are demonstrated here:
 
 ![Image of PCB without clock patch](BaseFalcon.png)
 
-Here we can see that the main clock signal (16.1079525 on NTSC machines, 16.042494 MHz on others) goes from the Combel (also known as the Combo IC :)) via **R21** (27 Ω, other side of PCB), having **C208** (10 pF, other side of PCB; not present on PCB since rev.H) as a low pass filter and finally through **R217** (0 Ω) right into three resistors: **R216** (33 Ω), **R221** (33 Ω, changed to 0 Ω in PCB rev.H) and **R222** (33 Ω).
+We can see that the main clock signal (16.1079525 on NTSC machines, 16.042494 MHz on PAL/Péritel) goes from the Combel (also known as the Combo IC :)) via **R21** (27 Ω, back side of PCB), having **C208** (10 pF, back side of PCB; not present on PCB since rev.H) as a low pass filter and finally through **R217** (0 Ω) right into three resistors: **R216** (33 Ω), **R221** (33 Ω, changed to 0 Ω in PCB rev.H) and **R222** (33 Ω).
 
-Atari didn't realise the problem until it was too late. As you can see in the [schematic / PCB history log](history.md), the first attempt to fix had appeared in August 1993, i.e. by the time when Atari would be shutting down Falcon manufacturing.
+Why there has to be a 0 Ω resistor (R217) I have no clue but it's not that what causes trouble. The problem are those three clock signals branching from it, esp. the one going to the SDMA (*Sound and SCSI Direct Memory Access*, did you know?) where the clock travels first to the FPU and then to the other end of the PCB.
+
+Those three paths basically distribute the main clock to all important Falcon ICs so they can work synchronously. Unfortunately, those paths are very poorly shielded so one IC can very easily disturb another. Especially in the cases with high data bus load (typically displaying video in high resolutions) SDMA problems become nearly unavoidable.
+
+Sane solution would be to make those paths as short as possible and of course make each path buffered.
+
+Atari hadn't realised the problem until it was too late. As you can see in the [schematic / PCB history log](history.md), the first attempt to fix had appeared in August 1993, i.e. by the time when Atari would be shutting down Falcon manufacturing.
 
 ## How do I know I need it?
 
+There are two or three typical symptoms (as mentioned, typically surfacing in higher resolutions):
+- SCSI read/write errors, corrupted data
+- crackles during sound playback (corrupted data between SDMA and DSP and/or DAC)
+- Floppy disk read/write errors (especially in Falcons with accelerated bus)
+
+As you can see, the worst possible scenario is recording audio, using DMA run it trough the DSP and write output to a SCSI disk in 720x512x16bit resolution. :)
+
 ## How and where the mod is done?
+
+Not surprisingly, the heart of all changes are always those three/four resistors because they are exit points to the three clocks - A, B and C; and the SDMA itself (because that's where the errors happen).
+
+I wish I could tell you that those gates are doing some well defined operation which Atari engineers just forgot to implement. The truth is that nobody really knows what's happening there and why the gates help (!).
+
+There are various theories what effect the gate(s) and/or resistors and/or capacitors have on the clock paths:
+- the basic idea is that the gates serve as some kind of protection against the signal going backwards (if something comes to an output pin, it wont get trough the gate)
+- effect of a delay: resulting in SDMA's clock input either being phase shifted or even delayed by whole tick what leads to avoiding a conflict on data bus
+- weaker signals or better filtered signals (less prone to fail due to random noise)
+- different voltage levels
+- different impedance
 
 ### Variant 1.1
 ### Variant 1.2
