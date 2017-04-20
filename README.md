@@ -28,9 +28,10 @@ As if this wasn't enough, another important feature of a clock patch is which *f
 
 The delay means how much time the gate needs to perform given operation. As you will see, this is very important factor for different clock patches!
 
-And also, the manufacturer is importat. In our case the important names are:
+And also, the manufacturer is important. In our case the important names are:
 - **SN740x**: Texas instruments
 - **DM740x**: National semiconductor
+- **MC740x**: Motorola (for historical reasons)
 
 And to make our 7404 journey complete, the "N" suffix means plastic through-hole DIP package, in other words, the usual legs so you can solder it to U63's legs.
 
