@@ -1,6 +1,6 @@
 This is a website trying to explain the clock patch for the Atari Falcon in layman's terms. As a bonus, you can find here [history of all known schematic and PCB revisions](history.md), with details of every change (if available).
 
-Purpose of this site is not to shock you with some new finding but gather the existing knowledge. If you google for Falcon clock patch, you'll get very fragmented information with blurry schematics and very often not even in English language but in German or French instead. Basically, all the great knowledge is burried in old magazines, FidoNet archives and ancient Usenet groups' posts.
+Purpose of this site is not to shock you with some new findings but gather the existing knowledge. If you google for Falcon clock patch, you'll get very fragmented information with blurry schematics and very often not even in English language but in German or French instead. Basically, all the great knowledge is burried in old magazines, FidoNet archives and ancient Usenet groups' posts.
 
 I'd like to meet two goals with this little project, one is to encourage people to get again interested in this confusing little mod (esp. those who do not know what is it about at all) and second is to get some feedback from people who *do* know but are lazy to explain all the details to others but maybe would like to correct errors or add a bit of information.
 
@@ -21,9 +21,22 @@ If only one IC is used, it is usually mounted on top of U63 which offers several
 - it's the same width as the 7404 so if you put it on U63, they will match nicely
 - most importantly, it provides the needed VCC and GND pins
 
-I wish I could tell you that those gates are doing some well defined operation which Atari engineers just forgot to implement. The truth is that nobody really knows what's happening there and why the gates help (!).
+As if this wasn't enough, another important feature of a clock patch is which *family* (or technology) the 740x was used to manufacture given gate. There are [many families](https://en.wikipedia.org/wiki/7400_series#7400_series_derivative_families) available, I focus only on those interesting to us:
+- **74F0x**: "Fast" 740x, 3.4ns gate delay
+- **74LSx**: "Low-power Schottky", 10ns gate delay
+- **74HCTx**: "High-speed CMOS TTL voltage", 8ns gate delay
+
+The delay means how much time the gate needs to perform given operation. As you will see, this is very important factor for different clock patches!
+
+And also, the manufacturer is importat. In our case the important names are:
+- **SN740x**: Texas instruments
+- **DM740x**: National semiconductor
+
+And to make our 7404 journey complete, the "N" suffix means plastic through-hole DIP package, in other words, the usual legs so you can solder it to U63's legs.
 
 ## Why does it exist?
+
+I wish I could tell you that those gates are doing some well defined operation which Atari engineers just forgot to implement. The truth is that nobody really knows what's happening there and why the gates help (!).
 
 The problematic part of the design is here:
 
