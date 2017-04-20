@@ -29,11 +29,15 @@ Atari didn't realise the problem until it was too late. As you can see in the [s
 
 ## References
 
-Sorted by volume of information taken from there:
+Credit where credit's due! Sorted by volume of information taken from there:
 
 [Atari Falcon030 Service Guide](http://dev-docs.atariforge.org/files/Atari_Falcon030_Service_Guide.pdf) hosted by Lonny Pursell
 
 [Clock patch explanation](http://phoenix.inf.upol.cz/~opichals/libhyp/hypview.cgi?url=http://joy.sophics.cz/joyaip.hyp&dstenc=latin2&index=93) by Petr Stehlík
+
+[Chip'n Chips](phoenix.inf.upol.cz/~opichals/libhyp/hypview.cgi?url=http://dev-docs.atariforge.org/files/chips.hyp) by Michael Ruge and hosted by Lonny Pursell
+
+[DoIt Falcon030](http://dev-docs.atariforge.org/files/Doit_Archives-ELiTE_2006.zip) by Robert Schaffner, published by ELiTE and hosted by Lonny Pursell
 
 [Falcon troubleshooting](http://members.optusnet.com.au/~startreks/falccct.html) by Claes Holmerup (found on the [website](http://members.optusnet.com.au/~startreks/falccct.html) by Mark Bedingfield)
 
