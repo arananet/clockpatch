@@ -1,37 +1,28 @@
-## Welcome to GitHub Pages
+# Clock patch for Atari Falcon
 
-You can use the [editor on GitHub](https://github.com/mikrosk/clockpatch/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+This is a website trying to explain the clock patch for the Atari Falcon in layman's terms. As a bonus, you can find here [history of all known schematic and PCB revisions](history.md), with details of change (if available).
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+If you find an error, please mention it in the [issues](https://github.com/mikrosk/clockpatch/issues) or fork this repository and provide a [pull request](https://github.com/mikrosk/clockpatch/pulls) (you can edit these files directly in the web editor).
 
-### Markdown
+## What is it?
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## Why does it exist?
 
-```markdown
-Syntax highlighted code block
+The problematic part of the design is here:
+ ![Image of PCB without clock patch](Clockpatch.png)
+ Here we can see that the main clock signal (16.042494 MHz) goes from the Combel (also known as the Combo IC :)) via **R21**, having **C208** (not present on PCB since rev.H) as a low pass filter and finally through **R217** (0 Ω) right into three resistors: **R216** (33 Ω), **R221** (33 Ω, changed to 0 Ω in PCB rev.H) and **R222** (33 Ω).
 
-# Header 1
-## Header 2
-### Header 3
+Atari didn't realise the problem until it was too late. As you can see in the [schematic / PCB history log](history.md), the first attempt to fix had appeared in August 1993, i.e. by the time when Atari would be shutting down Falcon manufacturing.
 
-- Bulleted
-- List
+## How do I know I need it?
 
-1. Numbered
-2. List
+## How and where the mod is done?
 
-**Bold** and _Italic_ and `Code` text
+### Variant 1.1
+### Variant 1.2
+### Variant 1.3
+### Variant 1.4
+### Variant 2.1
+### Variant 2.2
 
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/mikrosk/clockpatch/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+## How do I know it worked?
