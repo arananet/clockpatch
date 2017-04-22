@@ -14,8 +14,8 @@ B	|	25/08/1992 ||| Revised per ECO #1488 [![Image of ECO #1488](Eco1488_preview.
 C	|	25/08/1992 ||| Revised per ECO #1492
 D	|	25/08/1992 ||| Revised per ECO #1497
 E	|	|||			Revised per ECO #1498 [![Image of ECO #1498](Eco1498_preview.png)](Eco1498.png)
-F	|	10/09/1992 | A || Revised per ECO #1505	| NTSC A, PAL-I/B A, PERITEL A | Production release, manufactured in 10/1992 by ATMC's "Golden Horse" (PAL) and "ECS Tamsui" (NTSC, PERITEL); PERITEL models had socketed CODEC and no RF modulator
-G	|	06/01/1993 | B | 26/01/1993 |	Revised per ECO #1600 [![Image of ECO #1600](Eco1600_preview.png)](Eco1600.png) || Manufactured by EFA's Ta Yuan ever since; there's no PERITEL version manufactured anymore
+F	|	10/09/1992 | A || Revised per ECO #1505	| NTSC A, PAL-I/B A, PERITEL A | Production release, manufactured in 10/1992 by ATMC's "Golden Horse" and "ECS Tamsui"; PERITEL models had socketed CODEC and no RF modulator
+G	|	06/01/1993 | B | 26/01/1993 |	Revised per ECO #1600 [![Image of ECO #1600](Eco1600_preview.png)](Eco1600.png) || Manufactured by EFA's "Ta Yuan" ever since; there's no PERITEL version manufactured anymore
 H	|	20/01/1993 | C | 16/03/1993 |	Revised per ECO #1604 [![Image of ECO #1604 1/2](Eco1604_1_preview.png)](Eco1604_1.png) [![Image of ECO #1604 2/2](Eco1604_2_preview.png)](Eco1604_2.png)
 || D | 16/03/1993 | Revised per ECO #1613 || Common D/C release, manufactured for Atari between 03/1993 - 09/1993, later sold by C-Lab as MKI models
 || E |	02/03/1993 | Revised per ECO #1621
