@@ -8,6 +8,9 @@ I'd like to meet two goals with this little project, one is to encourage people 
 
 If you find an error, please mention it in the [issues](https://github.com/mikrosk/clockpatch/issues) or fork the [repository](https://github.com/mikrosk/clockpatch) and provide a [pull request](https://github.com/mikrosk/clockpatch/pulls) (you can edit these files directly in the web editor).
 
+Assembled by Miro Kropáček a.k.a. MiKRO / Mystic Bytes
+xx/04/2017, Brisbane / Queensland, Australia
+
 ## What is it?
 
 It is a small patch (or mod if you like) for the three main Falcon clock signals (fed to the CPU, FPU+SDMA and the expansion slot), usually (but not always) utilising one or more 7404 and/or 7408 [gates](https://en.wikipedia.org/wiki/Logic_gate).
@@ -64,6 +67,8 @@ There are two or three typical symptoms (as mentioned, typically surfacing in hi
 
 As you can see, the worst possible scenario is recording audio, using DMA run it trough the DSP and write output to a SCSI disk in 720x512x16bit resolution. :)
 
+Atari used [this tool](f030test.zip) to verify fixed Falcons -- if you see green bars from left to right, you're good. Red bars mean trouble.
+
 ## How and where the mod is done?
 
 Not surprisingly, the heart of all changes are always those three/four resistors because they are exit points to the three clocks - A, B and C; and the SDMA itself (because that's where the errors happen).
@@ -77,13 +82,22 @@ There are various theories what effect the gate(s) and/or resistors and/or capac
 - different voltage levels
 - different impedance
 
-### Variant 0
+### Variant 0 (author: Atari Corp.)
 [ECO #1643](Eco1643.pdf) for PCB rev. H (NTSC) and G (PAL-I/B) respectively first recognises the problem in August 1993.
 
 ![Image of Clockpatch-0](Clockpatch-0.svg)
 
-### Variant 1.1
-[Fax page from Atari Benelux](74F08.jpg)
+The fix is simple and apparently does the job for some Falcons. Just remove C208 (beware, located on the other side of PCB) and short circuit R221. That's it.
+
+### Variant 1.1 (author: Atari Corp.)
+This fix used to circulate among users as a copy of [fax page from Atari Benelux](74F08.jpg).
+
+![Image of Clockpatch-1.1](Clockpatch-1.1.svg)
+
+It's the most common clock patch spread around. The idea is that the clock signal from R217 comes into the 74F04 as *1A*, goes inverted out as *1Y* which in turn feeds *4A*, *5A* and *6A*. Each gate inverts the signal again (i.e. it has the original value) and outputs it as *4Y*, *5Y* and *6Y* into the respective clock paths.
+
+This basically strengthen the signals (no resistors) and isolate them from going backwards. Works well usually only for Falcons without accelerated bus.
+
 ### Variant 1.2
 [Fax page from Atari Benelux](74F04img.gif) dated Oct 7, 1994.
 ### Variant 1.3
