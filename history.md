@@ -23,7 +23,7 @@ H	|	20/01/1993 | C | 16/03/1993 |	Revised per ECO #1604 [![Image of ECO #1604 1/
 J	|	11/06/1993 | G | 04/08/1993 | Revised per [ECO #1642](Eco1642.pdf) | NTSC G | Improved video quality for NTSC machines
 K	|	06/08/1993 | H | 04/08/1993 | Revised per [ECO #1643](Eco1643.pdf) [![Image of ECO #1643](Eco1643_preview.png)](Eco1643.png) |	NTSC H, PAL-I/B G	| Attempt to fix sound crackle during DMA playback
 L	|	06/08/1993 | J | 04/08/1993 | Revised per ECO #1641 [![Image of ECO #1641](Eco1641_preview.png)](Eco1641.png) | NTSC J, PAL-I/B H
-||||| PAL J
+||||| PAL J | Strangely, there are records of Falcons from 07/1993 with this revision. Maybe done by an Atari dealer in post production to D/C PCBs?
 ||||| PAL K |	C-Lab Falcon MKII, manufactured in 09/1994
 
 Schematic 500047-001 rev. | Schematic rev. date	| Description | Notes
