@@ -90,7 +90,10 @@ There are various theories what effect the gate(s) and/or resistors and/or capac
 The fix is simple and apparently does the job for some Falcons. Just remove C208 (beware, located on the other side of PCB) and short circuit R221. That's it.
 
 ### Variant 1.1 (author: Atari Corp.)
-This fix used to circulate among users as a copy of [fax page from Atari Benelux](74F08.jpg).
+This fix used to circulate among users as a scanned [fax page from Atari Benelux](74F08.jpg).
+
+### Variant 1.2 (author: Atari Corp.)
+Another well known scanned [fax page from Atari Benelux](74F04img.gif), dated Oct 7, 1994. It had been said to try if [Variant 1.1](#variant-11-author-atari-corp) doesn't help.
 
 ![Image of Clockpatch-1.1](Clockpatch-1.1.svg)
 
@@ -98,8 +101,8 @@ It's the most common clock patch spread around. The idea is that the clock signa
 
 This basically strengthen the signals (no resistors) and isolate them from going backwards. Works well usually only for Falcons without accelerated bus.
 
-### Variant 1.2
-[Fax page from Atari Benelux](74F04img.gif) dated Oct 7, 1994.
+**Interesting discovery: if you have installed *PowerUp2* or another CPU speeder, the wire from *4A* doesn't go directly to *R222* but to the PU2 box instead (where the CPU clock is doubled when PU2 is active). From there it goes to *R222*. However, with the *CT60(e)* this seems to break things, perhaps because of the wire length. Removing this detour not only made the CT60e boot straight away (before I had to boot into 030 mode first) but also solved a [mysterious overheating problem](http://www.atari-forum.com/viewtopic.php?f=97&t=31461) of the 74F04.**
+
 ### Variant 1.3
 ### Variant 1.4
 ### Variant 2.1
