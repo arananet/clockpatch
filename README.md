@@ -43,7 +43,7 @@ To make our 7404 journey complete, the "N" suffix means plastic through-hole DIP
 
 The problematic parts of Falcon's design are demonstrated here:
 
-![Image of PCB without clock patch](BaseFalcon.png)
+![Image of PCB without clock patch](BaseFalcon.svg)
 
 We can see that the main clock signal (16.1079525 on NTSC machines, 16.042494 MHz on PAL/Péritel) goes from the Combel (also known as the Combo IC :)) via **R21** (27 Ω, back side of PCB), having **C208** (10 pF, back side of PCB; not present on PCB since rev.H) as a low pass filter and finally through **R217** (0 Ω) right into three resistors: **R216** (33 Ω), **R221** (33 Ω, changed to 0 Ω in PCB rev.H) and **R222** (33 Ω).
 
@@ -77,8 +77,15 @@ There are various theories what effect the gate(s) and/or resistors and/or capac
 - different voltage levels
 - different impedance
 
+### Variant 0
+[ECO #1643](Eco1643.pdf) for PCB rev. H (NTSC) and G (PAL-I/B) respectively first recognises the problem in August 1993.
+
+![Image of Clockpatch-0](Clockpatch-0.svg)
+
 ### Variant 1.1
+[Fax page from Atari Benelux](74F08.jpg)
 ### Variant 1.2
+[Fax page from Atari Benelux](74F04img.gif) dated Oct 7, 1994.
 ### Variant 1.3
 ### Variant 1.4
 ### Variant 2.1
