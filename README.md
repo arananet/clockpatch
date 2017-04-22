@@ -90,20 +90,19 @@ There are various theories what effect the gate(s) and/or resistors and/or capac
 The fix is simple and apparently does the job for some Falcons. Just remove C208 (beware, located on the other side of PCB) and short circuit R221. That's it.
 
 ### Variant 1.1 (author: Atari Corp.)
-This fix used to circulate among users as a scanned [fax page from Atari Benelux](74F08.jpg) and it had been said to try as the default fix for Falcons with unaccelerated and accelerated bus.
+This fix used to circulate among users as a scanned [fax page from Atari Benelux](74F08.jpg) and it had been said to try as the default fix for Falcons with both unaccelerated and accelerated bus.
 
 ![Image of Clockpatch-1.1](Clockpatch-1.1.svg)
 
 This rather confusing variant does the following:
 - keeps *CPUCLKB* to the CPU intact
-- strengthens (no resistor) and delays *CPUCLKA* to the FPU and SDMA by 74F08's gate delay (ANDing the same value on input produces the same value on output)
-- delays *CPUCLKC* to the expansion slot by 74F08's gate delay
+- strengthens (no resistor) and delays *CPUCLKA* to the FPU and SDMA by *74F08*'s gate delay (ANDing the same value on input produces the same value on output)
+- delays *CPUCLKC* to the expansion slot by *74F08*'s gate delay
+- isolates the two signals from going backwards
 
 Interestingly, *DoIt F030* claims this schematic is broken and warns the reader that this discrepancy between the CPU clock and others would result in non-working Falcon, "surely with a 060 CPU". There's a proposed change to use AND gates for all three signals.
 
 The authors of the *BlowUp FX* recommended similar approach: not using *74F08* but *74F04*'s inveters for *CPUCLKA* & *CPUCLKB* -- basically [Variant 1.2](#variant-12-author-atari-corp) without *CPUCLKC*.
-
-On the other hand, many prefer this one over the others.
 
 ### Variant 1.2 (author: Atari Corp.)
 Another well known scanned [fax page from Atari Benelux](74F04img.gif), dated Oct 7, 1994. It had been said to try if [Variant 1.1](#variant-11-author-atari-corp) doesn't help.
