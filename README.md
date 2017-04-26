@@ -44,7 +44,7 @@ To make our 740x journey complete, the "N" suffix means plastic through-hole DIP
 
 ## Why does it exist?
 
-The problematic parts of Falcon's design are demonstrated here:
+The problematic parts of Falcon's design are demonstrated here (right-click on the image and choose something like "Open image in new tab" or "View image", then you can zoom it in as you wish, it's a vector image):
 
 ![Image of PCB without clock patch](BaseFalcon.svg)
 
@@ -130,7 +130,7 @@ Credit where credit's due! Sorted by volume of information taken from there:
 
 [Clock patch explanation in JoyAIP](http://phoenix.inf.upol.cz/~opichals/libhyp/hypview.cgi?url=http://joy.sophics.cz/joyaip.hyp&dstenc=latin2&index=93) by Petr Stehlík
 
-[Chip'n Chips](phoenix.inf.upol.cz/~opichals/libhyp/hypview.cgi?url=http://dev-docs.atariforge.org/files/chips.hyp) by Michael Ruge and hosted by Lonny Pursell
+[Chip'n Chips](http://phoenix.inf.upol.cz/~opichals/libhyp/hypview.cgi?url=http://dev-docs.atariforge.org/files/chips.hyp) by Michael Ruge and hosted by Lonny Pursell
 
 [DoIt Falcon030](http://dev-docs.atariforge.org/files/Doit_Archives-ELiTE_2006.zip) by Robert Schaffner, published by ELiTE and hosted by Lonny Pursell
 
