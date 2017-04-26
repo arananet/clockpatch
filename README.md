@@ -115,7 +115,9 @@ This basically strengthen the signals (no resistors) and isolate them from going
 
 **Interesting discovery: if you have installed *PowerUp 2* or another CPU speeder, the wire from *4Y* doesn't go directly to *R222*'s pad but to the PU2 box instead (where the CPU clock is doubled when PU2 is active). From there it goes to *R222*'s pad. However, with the *CT60(e)* this seems to break things, perhaps because of the wire length. Removing this detour not only made the CT60e boot straight away (before I had to boot into 030 mode first) but also solved a [mysterious overheating problem](http://www.atari-forum.com/viewtopic.php?f=97&t=31461) of the 74F04.**
 
-### Variant 1.3
+### Variant 1.3 (author: Line Audio Design)
+
+
 ### Variant 1.4
 ### Variant 2.1
 ### Variant 2.2
@@ -134,7 +136,7 @@ Credit where credit's due! Sorted by volume of information taken from there:
 
 [DoIt Falcon030](http://dev-docs.atariforge.org/files/Doit_Archives-ELiTE_2006.zip) by Robert Schaffner, published by ELiTE and hosted by Lonny Pursell
 
-[Falcon troubleshooting](http://members.optusnet.com.au/~startreks/falccct.html) by Claes Holmerup (found on the [website](http://members.optusnet.com.au/~startreks/falccct.html) by Mark Bedingfield)
+[Falcon troubleshooting](http://www.holmerup.com/trouble.html) by Claes Holmerup (found on the [website](http://members.optusnet.com.au/~startreks/falccct.html) by Mark Bedingfield)
 
 [Falcon clock signals](https://mikrosk.github.io/ct60tos/rodolphe.czuba.free.fr/Museum/F30_Clocks.jpg) by Rodolphe Czuba
 
