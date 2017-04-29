@@ -17,7 +17,7 @@ There had been two large Falcon manufacturers: ATMC and EFA. ATMC had used two s
 
 This is one big mess. According to this diagram in the Falcon030 service manual:
 
-![falcon_serial.png]
+![falcon_serial.png](falcon_serial.png)
 
 it should be pretty straightforward but it is not. There are several discrepancies:
 
