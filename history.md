@@ -21,7 +21,7 @@ This is one big mess. According to this diagram in the Falcon030 service manual:
 
 it should be pretty straightforward but it is not. There are several discrepancies:
 
-1. **Number of digits**: [ECO statistics document](ECOSTATX.[pdf] uses serial numbers with the control code having "0" prefix, few Falcons developed by B3/B5 and all of the Y4 Falcons follow this scheme, too
+1. **Number of digits**: [ECO statistics document](ECOSTATX.pdf) uses serial numbers with the control code having "0" prefix, few Falcons developed by B3/B5 and all of the Y4 Falcons follow this scheme, too
 2. **Colour encoding**: Early falcons from B3 and B5 follow the rules and include the number indicating colour encoding in their serial number. All of the Y4 Falcons however skip this number (or insert zero there, hard to say with such low sequential numbers) and rely solely on the PCB production number.
 3. **Sequential numbering**: It's more or less clear that every factory used its own numbers. However from the numbers I have it seems that the sequence number was reset only once in Y4, in 1994, and it's still not clear whether it was because of new year or because C-Lab had already ordered new machines for their MK I models.
 
