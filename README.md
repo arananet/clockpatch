@@ -9,6 +9,7 @@ I'd like to meet two goals with this little project, one is to encourage people 
 If you find an error, please mention it in the [issues](https://github.com/mikrosk/clockpatch/issues) or fork the [repository](https://github.com/mikrosk/clockpatch) and provide a [pull request](https://github.com/mikrosk/clockpatch/pulls) (you can edit these files directly in the web editor).
 
 Assembled by Miro Kropáček a.k.a. MiKRO / Mystic Bytes
+
 xx/04/2017, Brisbane / Queensland, Australia
 
 ## What is it?
@@ -26,7 +27,7 @@ If only one IC is used, it is usually mounted on top of U63 which offers several
 - it's the same width as the 7404 so if you put it on U63, they will match nicely
 - most importantly, it provides the needed VCC and GND pins
 
-As if this wasn't enough, another important feature of a clock patch is which *family* (or technology) the 740x was used to manufacture given gate. There are [many families](https://en.wikipedia.org/wiki/7400_series#7400_series_derivative_families) available, I focus only on those interesting to us:
+Important thing to realise when building clock patch is which *family* (or technology) the 740x was used to manufacture given gate. There are [many families](https://en.wikipedia.org/wiki/7400_series#7400_series_derivative_families) available, I focus only on those interesting to us:
 - **74F0x**: "Fast" 740x, 3.4ns gate delay
 - **74LSx**: "Low-power Schottky", 10ns gate delay
 - **74HCTx**: "High-speed CMOS TTL voltage", 8ns gate delay
@@ -102,7 +103,7 @@ This rather confusing variant does the following:
 
 Interestingly, *DoIt F030* claims this schematic is broken and warns the reader that this discrepancy between the CPU clock and others would result in non-working Falcon, "surely with a 060 CPU". There's a proposed change to use AND gates for all three signals.
 
-The authors of the *BlowUp FX* recommended similar approach: not using *74F08* but *74F04*'s inveters for *CPUCLKA* & *CPUCLKB* -- basically [Variant 1.2](#variant-12-author-atari-corp) without *CPUCLKC*.
+On the other hand, the authors of the *BlowUp FX-Card* recommended a similar approach: not using *74F08* but *74F04*'s inveters for *CPUCLKA* & *CPUCLKB* -- basically [Variant 1.2](#variant-12-author-atari-corp) without *CPUCLKC*.
 
 ### Variant 1.2 (author: Atari Corp.)
 Another well known scanned [fax page from Atari Benelux](74F04img.gif), dated Oct 7, 1994. It had been said to try if [Variant 1.1](#variant-11-author-atari-corp) doesn't help.
