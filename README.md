@@ -101,6 +101,8 @@ This rather confusing variant does the following:
 - delays *CPUCLKC* to the expansion slot by *74F08*'s gate delay
 - isolates the two signals from going backwards
 
+Note: I've seen this clock patch with a 74LS08, too.
+
 Interestingly, *DoIt F030* claims this schematic is broken and warns the reader that this discrepancy between the CPU clock and others would result in non-working Falcon, "surely with a 060 CPU". There's a proposed change to use AND gates for all three signals.
 
 On the other hand, the authors of the *BlowUp FX-Card* recommended a similar approach: not using *74F08* but *74F04*'s inveters for *CPUCLKA* & *CPUCLKB* -- basically [Variant 1.2](#variant-12-author-atari-corp) without *CPUCLKC*.
@@ -117,15 +119,40 @@ This basically strengthen the signals (no resistors) and isolate them from going
 **Interesting discovery: if you have installed *PowerUp 2* or another CPU speeder, the wire from *4Y* doesn't go directly to *R222*'s pad but to the PU2 box instead (where the CPU clock is doubled when PU2 is active). From there it goes to *R222*'s pad. However, with the *CT60(e)* this seems to break things, perhaps because of the wire length. Removing this detour not only made the CT60e boot straight away (before I had to boot into 030 mode first) but also solved a [mysterious overheating problem](http://www.atari-forum.com/viewtopic.php?f=97&t=31461) of the 74F04.**
 
 ### Variant 1.3 (author: Atari Corp.?)
-JoyAIP says this is supposed to be in all Falcons rev. D/C manufactured after Dec 1, 1993 (what sounds rather strange as Atari hadn't manufactured any Falcons after September or so, perhaps C-Lab Falcons?)
+JoyAIP says this is supposed to be in all Falcons rev. D/C manufactured after Dec 1, 1993 (what sounds rather strange as Atari hadn't manufactured any Falcons after September or so, perhaps C-Lab MK I Falcons? -- I did see such variant in an MK I from 09/1993).
+
+![Image of Clockpatch-1.3](Clockpatch-1.3.svg)
+
+It's a variation of [Variant 1.1](#variant-11-author-atari-corp):
+- keeps *CPUCLKB* to the CPU intact
+- strengthens (no resistors) and delays *CPUCLKA* and *CPUCLKC* by *74F08*'s gate delay
+- isolates the two signals from going backwards (but doesn't care to isolate one from each other?)
 
 ### Variant 1.4 (author: Line Audio Design)
 
+### Variant 1.5 (author: Petr Stehlik)
+Invented as a workaround for floppy problems in the [FT/20 speeder](https://joy.sophics.cz/hard.htm#falcon).
+
+![Image of Clockpatch-1.5](Clockpatch-1.5.svg)
+
+It's basically an inversion of [Variant 1.1](#variant-11-author-atari-corp) / [Variant 1.3](#variant-13-author-atari-corp):
+- strengthens (no resistor) and delays *CPUCLKB* by *74F04*'s gate delay times two (around 7 ns)
+
+It was used in a Falcon without the FPU so perhaps the reason why it worked was that the SDMA had lighter 'load' then.
 
 ### Variant 2.1
 ### Variant 2.2
 
+### Variant 3 (author: Michael Ruge)
+This one is simple, just shortcut input and output of each of the three R2xx resistors. Interference isn't cured but they are stronger and this can help.
+
 ## How do I know it worked?
+
+Well, the first good sign is that the Falcon still boots. :) Then you can do various tests:
+
+- copy a big zip/lzh/arj archive to your floppy/SCSI hard disk and run the unarchiver's "verify" option on it
+- copy a lot of small files into a directory on your floppy/IDE/SCSI disk and then compare the directory trees with `TREE_CHK` from Kobold
+- set a very demanding resolution, like 864x640/256 and try direct-to-disk recording with a huge sample to SCSI hard disk -- you should hear it on playback without any crackles
 
 ## References
 
