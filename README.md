@@ -120,7 +120,7 @@ This basically strengthens the signals (no resistors), delays them (by the 74F04
 **Interesting discovery: if you have installed *PowerUp 2* or another CPU speeder, the wire from *4Y* doesn't go directly to *R222*'s pad but to the PU2 box instead (where the CPU clock is doubled when PU2 is active). From there it goes to *R222*'s pad. However, with the *CT60(e)* this seems to break things, perhaps because of the wire length. Removing this detour not only made the CT60e boot straight away (before I had to boot into 030 mode first) but also solved a [mysterious overheating problem](http://www.atari-forum.com/viewtopic.php?f=97&t=31461) of the 74F04.**
 
 ### Variant 1.3 (author: Atari Corp.?)
-JoyAIP says this is supposed to be in all Falcons rev. D/C manufactured after Dec 1, 1993 (what sounds rather strange as Atari hadn't manufactured any Falcons after September or so, perhaps C-Lab MK I Falcons? -- I did see such variant in an MK I from 09/1993).
+Chips'n Chips says this is supposed to be in all Falcons rev. D/C manufactured after Dec 1, 1993 (what sounds rather strange as Atari hadn't manufactured any Falcons after September or so, perhaps C-Lab MK I Falcons? -- I did see such variant in an MK I from 09/1993).
 
 ![Image of Clockpatch-1.3](Clockpatch-1.3.svg)
 
@@ -168,7 +168,7 @@ Simbo's version on Atari Forum uses a *74**HCT**04* with a 47 pF capacitor inste
 
 In ST Computer 06/1998 Michael Ruge describes a simplified version, [Variant 1.2](#variant-12-author-atari-corp) + the SDMA signal line cut but without any further grounding or filters. He does, however, mention an option to use another *74F04* with different number of passes through the inverters specifically for the SDMA line.
 
-Sometimes you can see a combined approach from [Variant 4](#variant-4-author-rodolphe-czuba) -- a capacitor terminated by a resistor.
+Sometimes you can see a combined approach from [Variant 4](#variant-4-author-rodolphe-czuba) -- a capacitor terminated by a 1 kΩ resistor (usually seen in AfterBurner 040 Falcons).
 
 ### Variant 2.2 (author: Ctirad Feřtr)
 This one (developed by the author of the Phantom accelerator) is considered to be the best clock patch available. It should work with any Falcon, with either accelerated or unaccelerated data bus. It basically combines most of the features and research results from other patches.
