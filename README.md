@@ -8,6 +8,7 @@ I'd like to meet two goals with this little project, one is to encourage people 
 
 If you find an error, please mention it in the [issues](https://github.com/mikrosk/clockpatch/issues) or fork the [repository](https://github.com/mikrosk/clockpatch) and provide a [pull request](https://github.com/mikrosk/clockpatch/pulls) (you can edit these files directly in the web editor).
 
+
 Assembled by Miro Kropáček a.k.a. MiKRO / Mystic Bytes
 
 xx/04/2017, Brisbane / Queensland, Australia
@@ -114,7 +115,7 @@ Another well known scanned [fax page from Atari Benelux](74F04img.gif), dated Oc
 
 It's the most common clock patch spread around. The idea is that the clock signal from R217 comes into the 74F04 as *1A*, goes inverted out as *1Y* which in turn feeds *4A*, *5A* and *6A*. Each gate inverts the signal again (i.e. it has the original value) and outputs it as *4Y*, *5Y* and *6Y* into the respective clock paths.
 
-This basically strengthen the signals (no resistors) and isolate them from going backwards. Works well usually only for Falcons without accelerated bus.
+This basically strengthens the signals (no resistors), delays them (by the 74F04's gate delay times two, around 7ns) and isolate them from going backwards. Works well usually only for Falcons without accelerated bus.
 
 **Interesting discovery: if you have installed *PowerUp 2* or another CPU speeder, the wire from *4Y* doesn't go directly to *R222*'s pad but to the PU2 box instead (where the CPU clock is doubled when PU2 is active). From there it goes to *R222*'s pad. However, with the *CT60(e)* this seems to break things, perhaps because of the wire length. Removing this detour not only made the CT60e boot straight away (before I had to boot into 030 mode first) but also solved a [mysterious overheating problem](http://www.atari-forum.com/viewtopic.php?f=97&t=31461) of the 74F04.**
 
@@ -129,6 +130,13 @@ It's a variation of [Variant 1.1](#variant-11-author-atari-corp):
 - isolates the two signals from going backwards (but doesn't care to isolate one from each other?)
 
 ### Variant 1.4 (author: Line Audio Design)
+This one is rather interesting, it combines the basic 74F04 patch with some of the 2.x variants, i.e. grounding the SDMA:
+
+![Image of Clockpatch-1.4](Clockpatch-1.4.svg)
+
+- strengthens (no resistor) and delays *CPUCLKB* and *CPUCLKC* by *74F04*'s gate delay times two (around 7 ns)
+- weakens (33R -> 47R), grounds (by another resistor - 83R) and delays *CPUCLKA* by *74F04*'s gate delay times two (around 7 ns)
+- so all signals are equally delayed and protected from going backwards plus the SDMA fix
 
 ### Variant 1.5 (author: Petr Stehlik)
 Invented as a workaround for floppy problems in the [FT/20 speeder](https://joy.sophics.cz/hard.htm#falcon).
@@ -139,6 +147,8 @@ It's basically an inversion of [Variant 1.1](#variant-11-author-atari-corp) / [V
 - strengthens (no resistor) and delays *CPUCLKB* by *74F04*'s gate delay times two (around 7 ns)
 
 It was used in a Falcon without the FPU so perhaps the reason why it worked was that the SDMA had lighter 'load' then.
+
+### Variant 1.6 (author: Simbo / Exxos)
 
 ### Variant 2.1
 ### Variant 2.2
