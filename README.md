@@ -1,5 +1,3 @@
-[work in progress...]
-
 This is a website trying to explain the clock patch for the Atari Falcon in layman's terms. As a bonus, you can find here [history of all known schematic and PCB revisions](history.md), with details of every change (if available).
 
 Purpose of this site is not to shock you with some new findings but gather the existing knowledge. If you google for Falcon clock patch, you'll get very fragmented information with blurry schematics and very often not even in English language but in German or French instead. Basically, all the great knowledge is burried in old magazines, FidoNet archives and ancient Usenet groups' posts.
@@ -11,7 +9,7 @@ If you find an error, please mention it in the [issues](https://github.com/mikro
 
 Assembled by Miro Kropáček a.k.a. MiKRO / Mystic Bytes
 
-xx/04/2017, Brisbane / Queensland, Australia
+30/04/2017, Brisbane / Queensland, Australia
 
 ## What is it?
 
@@ -140,7 +138,7 @@ This one is rather interesting, it combines the basic 74F04 patch with some of t
 - weakens (33 Ω -> 47 Ω), grounds (by another resistor - 83R) and delays *CPUCLKA* by *74F04*'s gate delay times two (around 7 ns)
 - so all signals are equally delayed and protected from going backwards plus the SDMA fix
 
-### Variant 1.5 (author: Petr Stehlik)
+### Variant 1.5 (author: Petr Stehlík)
 Invented as a workaround for floppy problems in the [FT/20 speeder](https://joy.sophics.cz/hard.htm#falcon).
 
 ![Image of Clockpatch-1.5](Clockpatch-1.5.svg)
