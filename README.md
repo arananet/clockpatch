@@ -30,8 +30,8 @@ If only one IC is used, it is usually mounted on top of U63 which offers several
 
 Important thing to realise when building clock patch is which *family* (or technology) the 740x was used to manufacture given gate. There are [many families](https://en.wikipedia.org/wiki/7400_series#7400_series_derivative_families) available, I focus only on those interesting to us:
 - **74F0x**: "Fast" 740x, 3.4ns gate delay
-- **74LSx**: "Low-power Schottky", 10ns gate delay
-- **74HCTx**: "High-speed CMOS TTL voltage", 8ns gate delay
+- **74LS0x**: "Low-power Schottky", 10ns gate delay
+- **74HCT0x**: "High-speed CMOS TTL voltage", 8ns gate delay
 
 To make things even more confusing, various manufacturers guarantee different delay times. So it does matter whether the gate is manufactured by Motorola (in the past...), Philips or Fairchild. The manufacturer can be sometimes guessed from the gate name prefix, for instance:
 - **SN740x**: Texas instruments, Fairchild, ...
@@ -148,13 +148,35 @@ It's basically an inversion of [Variant 1.1](#variant-11-author-atari-corp) / [V
 
 It was used in a Falcon without the FPU so perhaps the reason why it worked was that the SDMA had lighter 'load' then.
 
-### Variant 1.6 (author: Simbo / Exxos)
+### Variant 1.6 (author: Exxos)
+Inspired by [Variant 1.4](#variant-14-author-line-audio-design), then extended with the buffer resistors as described [here](http://www.exxoshost.co.uk/atari/last/falcpatch/index.htm#EXXOSMOD).
 
-### Variant 2.1
-### Variant 2.2
+![Image of Clockpatch-1.6](Clockpatch-1.6.svg)
+
+**TODO**
+
+### Variant 2.1 (author: Peter Green & Black Scorpion Software)
+Perhaps first published with their Nemesis accelerator. It basically uses [Variant 1.2](#variant-12-author-atari-corp) with some additional changes, made especially for Falcons with accelerated data bus.
+
+![Image of Clockpatch-2.1](Clockpatch-2.1.svg)
+
+- strengthens (no resistor) and delays *CPUCLKB* and *CPUCLKC* by *74F04*'s gate delay times two (around 15-20 ns, depending on the IC)
+- completely disables *CPUCLKA* path, replaces with 
+- if I understood remark in [this thread](http://www.atari-forum.com/viewtopic.php?f=27&t=30187&p=298944#p298883) correctly, originally they used *74**LS***04 gate (but I saw also a Nemesis with plain *7404*)
+
+Simbo's version on Atari Forum uses a *74**HCT**04* with a 47 pF capacitor instead of 33 pF but this doesn't seem to be a good idea. **TODO Ctirad**
 
 ### Variant 3 (author: Michael Ruge)
 This one is simple, just shortcut input and output of each of the three R2xx resistors. Interference isn't cured but they are stronger and this can help.
+
+### Variant 4 (author: Rodolphe Czuba?)
+This one is also simple, it basically only grounds / terminates the SDMA signal line with a resistor:
+
+![Image of Clockpatch-4](Clockpatch-4.svg)
+
+- the author explicitly mentions the need of the three resistors and removal of any previous clock patches (it's not 100% clear what to do if complete [Variant 0](#variant-0-author-atari-corp) is applied, whether also *C208* should be put back)
+- pin #14 of the AJAX chip (U20) is used as *GND*
+- the resistor must be as close to the SDMA as possible and the soldered area must be as short as possible
 
 ## How do I know it worked?
 
@@ -182,4 +204,8 @@ Credit where credit's due! Sorted by volume of information taken from there:
 
 [Phantom installation manual](http://www.volny.cz/boban07/PhantomS/phantom_manual.rtf) by and discussion with Ctirad Feřtr
 
+[Nemesis installation manual](http://dev-docs.atariforge.org/files/Nemesis_Manual.pdf) by Peter Green & Black Scorpion Software and hosted by Lonny Pursell
+
 [Falcon acceleration problems](http://www.stcarchiv.de/stc1998/06/falcon-beschleunigen) by Michael Ruge
+
+[CT60/63 fitting guide](http://powerphenix.com/CT60/english/fitting63.htm) by Rodolphe Czuba
