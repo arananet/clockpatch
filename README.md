@@ -177,8 +177,9 @@ This one (developed by the author of the Phantom accelerator) is considered to b
 
 ![Image of Clockpatch-2.2](Clockpatch-2.2.svg)
 
-As we can see, it's nearly identical to [Variant 2.1](#variant-21-author-peter-green--black-scorpion-software) but:
+As we can see, it's nearly identical to [Variant 2.1](#variant-21-author-peter-green--black-scorpion-software):
 
+- it uses two different gate ICs
 - the gate ICs **must** be as specified, i.e. FPU/CPU/expansion slot signals are delayed by the *74**F**04*'s delay times two (around 7 ns) and SDMA signal is delayed by the *SN7404N*'s delay times two (around 18 ns)
 - the [PhantomS accelerator](http://mujweb.cz/boban07/PhantomS) used *74**HCT**04* ICs for both inverters rendering the whole idea of different delays basically useless
 
