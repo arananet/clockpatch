@@ -60,6 +60,8 @@ Sane solution would be to make those paths as short as possible and of course ma
 
 Atari hadn't realised the problem until it was too late. As you can see in the [schematic / PCB history log](history.md), the first attempt to fix had appeared in August 1993, i.e. by the time when Atari would be shutting down Falcon manufacturing.
 
+Note: Michael Ruge mentions also arrival of fast SCSI hard disks in the beginning of 1994 as one of the triggers but honestly, this doesn't seem to hold very well as there are audio problems also without SCSI disks.
+
 ## How do I know I need it?
 
 There are two or three typical symptoms (as mentioned, typically surfacing in higher resolutions):
@@ -135,7 +137,7 @@ This one is rather interesting, it combines the basic 74F04 patch with some of t
 ![Image of Clockpatch-1.4](Clockpatch-1.4.svg)
 
 - strengthens (no resistor) and delays *CPUCLKB* and *CPUCLKC* by *74F04*'s gate delay times two (around 7 ns)
-- weakens (33R -> 47R), grounds (by another resistor - 83R) and delays *CPUCLKA* by *74F04*'s gate delay times two (around 7 ns)
+- weakens (33 Ω -> 47 Ω), grounds (by another resistor - 83R) and delays *CPUCLKA* by *74F04*'s gate delay times two (around 7 ns)
 - so all signals are equally delayed and protected from going backwards plus the SDMA fix
 
 ### Variant 1.5 (author: Petr Stehlik)
@@ -149,22 +151,36 @@ It's basically an inversion of [Variant 1.1](#variant-11-author-atari-corp) / [V
 It was used in a Falcon without the FPU so perhaps the reason why it worked was that the SDMA had lighter 'load' then.
 
 ### Variant 1.6 (author: Exxos)
-Inspired by [Variant 1.4](#variant-14-author-line-audio-design), then extended with the buffer resistors as described [here](http://www.exxoshost.co.uk/atari/last/falcpatch/index.htm#EXXOSMOD).
+Inspired by [Variant 1.4](#variant-14-author-line-audio-design), then extended with the buffer resistors as described [here](http://www.exxoshost.co.uk/atari/last/falcpatch/index.htm#EXXOSMOD), i.e. it's  basically [Variant 1.2](#variant-12-author-atari-corp) with resistors put back (although of different values).
 
-![Image of Clockpatch-1.6](Clockpatch-1.6.svg)
-
-**TODO**
+It seems a *74**HCT**04* and definitely non-N type is used making this clock patch fit mainly for Falcons with unaccelerated bus.
 
 ### Variant 2.1 (author: Peter Green & Black Scorpion Software)
 Perhaps first published with their Nemesis accelerator. It basically uses [Variant 1.2](#variant-12-author-atari-corp) with some additional changes, made especially for Falcons with accelerated data bus.
 
 ![Image of Clockpatch-2.1](Clockpatch-2.1.svg)
 
-- strengthens (no resistor) and delays *CPUCLKB* and *CPUCLKC* by *74F04*'s gate delay times two (around 15-20 ns, depending on the IC)
-- completely disables *CPUCLKA* path, replaces with 
-- if I understood remark in [this thread](http://www.atari-forum.com/viewtopic.php?f=27&t=30187&p=298944#p298883) correctly, originally they used *74**LS***04 gate (but I saw also a Nemesis with plain *7404*)
+- the *7404* is upside down and *VCC*/*GND* are not connected to *U63* anymore because this clock patch used be delivered on a PCB -- voltage is taken usually from the big 4700 pF capacitor
+- if I understood remark in [this thread](http://www.atari-forum.com/viewtopic.php?f=27&t=30187&p=298944#p298883) correctly, originally they used a *74**LS***04 (but I saw also a Nemesis with plain *SN7404N*)
+- strengthens (no resistor) and delays FPU's *CPUCLKA*, *CPUCLKB* and *CPUCLKC* by *7404*'s gate delay times two (around 15-20 ns, depending on the IC)
+- completely disables *CPUCLKA* path for the SDMA, replacing it with output of yet another inverter, terminated by a 150 pF capacitor (pin #14 of the AJAX chip (U20) is used as *GND*)
+- the most interesting change are the two new capacitors: one seems to be for filtering input voltage (?) and the other for filtering SDMA's *CPUCLKA* **input**
 
-Simbo's version on Atari Forum uses a *74**HCT**04* with a 47 pF capacitor instead of 33 pF but this doesn't seem to be a good idea. **TODO Ctirad**
+Simbo's version on Atari Forum uses a *74**HCT**04* with a 47 pF capacitor instead of 33 pF.
+
+In ST Computer 06/1998 Michael Ruge describes a simplified version, [Variant 1.2](#variant-12-author-atari-corp) + the SDMA signal line cut but without any further grounding or filters. He does, however, mention an option to use another *74F04* with different number of passes through the inverters specifically for the SDMA line.
+
+Sometimes you can see a combined approach from [Variant 4](#variant-4-author-rodolphe-czuba) -- a capacitor terminated by a resistor.
+
+### Variant 2.2 (author: Ctirad Feřtr)
+This one (developed by the author of the Phantom accelerator) is considered to be the best clock patch available. It should work with any Falcon, with either accelerated or unaccelerated data bus. It basically combines most of the features and research results from other patches.
+
+![Image of Clockpatch-2.2](Clockpatch-2.2.svg)
+
+As we can see, it's nearly identical to [Variant 2.1](variant-21-author-peter-green--black-scorpion-software) but:
+
+- the gate ICs **must** be as specified, i.e. FPU/CPU/expansion slot signals are delayed by the *74**F**04*'s delay times two (around 7 ns) and SDMA signal is delayed by the *SN7404N*'s delay times two (around 18 ns)
+- the [PhantomS accelerator](http://mujweb.cz/boban07/PhantomS) used *74**HCT**04* ICs for both inverters rendering the whole idea of different delays basically useless
 
 ### Variant 3 (author: Michael Ruge)
 This one is simple, just shortcut input and output of each of the three R2xx resistors. Interference isn't cured but they are stronger and this can help.
