@@ -135,7 +135,7 @@ This one is rather interesting, it combines the basic 74F04 patch with some of t
 ![Image of Clockpatch-1.4](Clockpatch-1.4.svg)
 
 - strengthens (no resistor) and delays *CPUCLKB* and *CPUCLKC* by *74F04*'s gate delay times two (around 7 ns)
-- weakens (33 Ω -> 47 Ω), grounds (by another resistor - 83R) and delays *CPUCLKA* by *74F04*'s gate delay times two (around 7 ns)
+- weakens (33 Ω -> 47 Ω), grounds (by another resistor - 83 Ω) and delays *CPUCLKA* by *74F04*'s gate delay times two (around 7 ns)
 - so all signals are equally delayed and protected from going backwards plus the SDMA fix
 
 ### Variant 1.5 (author: Petr Stehlík)
